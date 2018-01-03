@@ -33,3 +33,5 @@ License
 -------
 
 MIT
+
+[![Build Status](https://travis-ci.org/meltmedia/ansible-java-oracle-8.svg?branch=master)](https://travis-ci.org/meltmedia/ansible-java-oracle-8)
