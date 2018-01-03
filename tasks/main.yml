@@ -1,0 +1,39 @@
+---
+# tasks file for ansible-java-oracle-8
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Installing pre-reqs
+  apt:
+    name: software-properties-common
+    state: present
+
+- name: Adding Oracle Java8 Repo Key
+  apt_key:
+    keyserver: "{{ ansible_java_oracle_8.keyserver }}"
+    id: "{{ ansible_java_oracle_8.id }}"
+    state: present
+
+- name: Adding Oracle Java8 repo
+  apt_repository:
+    repo: "{{ ansible_java_oracle_8.repo }}"
+    state: present
+
+- name: Accepting Oracle Java8 license
+  debconf:
+    name: oracle-java8-installer
+    question: shared/accepted-oracle-license-v1-1
+    value: true
+    vtype: select
+
+- name: debian | installing Oracle Java8
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default

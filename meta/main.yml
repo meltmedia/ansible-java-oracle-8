@@ -1,0 +1,14 @@
+galaxy_info:
+  author: meltmedia
+  description: Java Oracle 8 Ansible Role
+  company: meltmedia
+
+  license: MIT
+
+  min_ansible_version: 2.0
+
+
+  galaxy_tags: []
+
+
+dependencies: []
